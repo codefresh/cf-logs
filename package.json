@@ -2,6 +2,10 @@
   "name": "cf-logs",
   "version": "0.0.1",
   "description": "codefresh logs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codefresh/cf-logs.git"
+  },
   "keywords": [
     "cf-api"
   ],
