@@ -1,6 +1,6 @@
 {
   "name": "cf-logs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "codefresh logs",
   "repository": {
     "type": "git",

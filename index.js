@@ -20,7 +20,8 @@ module.exports =  function(options) {
 		}
 		else {
 			this.logger.add(winston.transports.File, {
-				filename: options.filePath
+				filename: options.filePath,
+				json: false
 			});
 		}
 	}
