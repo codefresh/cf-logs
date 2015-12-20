@@ -17,10 +17,19 @@ You can provide a namespace for your current logger, just like in 'debug' module
 var logger = require('cf-logs').Logger("codefresh:example");
 
 logger.info("info message");
-logger.error("error message");
+logger.debug("debug meesage"):
 ```
-This is very powerfull for development, because many times you want to see only logs from a specific part of the application so you can for example set the DEBUG environment variable to for example: "codefresh:builds". 
-### Configuring the logger
+This is very powerfull for development, because many times you want to see only logs from a specific part of the application so you can for example set the DEBUG environment variable to for example: "codefresh:builds". <br />
+### Logging Errors
+```javascript
+var logger = require('cf-logs').Logger("codefresh:example");
+
+var error = new Error("very bad error");
+logger.error("error: %s", error.toString());
+logger.error("stack: %s", error.stack);
+```
+
+## Configuring the logger
 The options that can be passed are:
 ```javascript
 var options = {
@@ -39,13 +48,13 @@ var options = {
 var logger = require('cf-logs');
 logger.setGlobalOptions(options);
 ```
-#### Logging to file
+### Logging to file
 Set 'filePath' field to an absolute path to a file save the logs to a file.
 The default is set to null which means no logging to file will happen.
-#### Logging to console
+### Logging to console
 Set 'console' filed to true or false to log to the console.
 The default is set to true
-#### Logging levels
+### Logging levels
 The logging level is an additional filter that can be set, mainly for production usage.
 we have 4 levels, from highest to lowest priority:<br />
 1. error <br />
@@ -54,13 +63,13 @@ we have 4 levels, from highest to lowest priority:<br />
 4. debug <br />
 If not set, the default logging level is 'debug'. <br />
 For example: if we set the logging level to warn, then only error and warn logs will be handled. info and debug will not be handled.
-#### Showing namespace
+### Showing namespace
 Set 'showNamespace' field to true or false to show the namespace in the logs
 The default is false
-#### Global name to the logger
+### Global name to the logger
 You can set 'env_module' field to a name that will be shown on all logs. for example: "cf-api-machine-1"
 The default is set to null which will not print anything
-#### Show request id 
+### Show request id 
 Set 'showRequestId' field to true or false to show the current request id if exists
 The default is set to false
 
