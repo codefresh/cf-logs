@@ -24,16 +24,16 @@ This is very powerfull for development, because many times you want to see only 
 The options that can be passed are:
 ```javascript
 var options = {
-  filePath: "absolute_path_to_log_file",
-  console: false/true,
+  filePath: String,
+  console: Boolean,
   loggly:{
-    subdomain: "subdomain_of_loggly_account",
-    inputToken: "inputToken_of_loggly_account"
+    subdomain: String,
+    inputToken: String
   },
-  showNamespace: false/true,
-  env_module: "module_name",
-  showRequestId: false/true,
-  level: "error/warn/info/debug"
+  showNamespace: Boolean,
+  env_module: String,
+  showRequestId: Boolean,
+  level: String(one of: "error/warn/info/debug")
 }
 
 var logger = require('cf-logs');
