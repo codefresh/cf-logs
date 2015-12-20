@@ -6,7 +6,6 @@ var sinon      = require('sinon');
 var sinonChai  = require('sinon-chai');
 chai.use(sinonChai);
 var cflogs    = require('../lib/index');
-var intercept = require("intercept-stdout");
 
 
 beforeEach(function () {
@@ -158,18 +157,195 @@ describe('create new logger - creates a new namespace that can be enabled/disabl
 
 });
 
-describe.skip('using DEBUG environment variable', function () {
+describe('using DEBUG environment variable', function () {
 
-    it('should not print anything when DEBUG is not set', function () {
+    var addSpy, logSpy, errorSpy, warnSpy, infoSpy, debugSpy;
+    var proxyLogger;
 
+    beforeEach(function(){
+        addSpy = sinon.spy();
+        logSpy = sinon.spy();
+        errorSpy = sinon.spy();
+        warnSpy = sinon.spy();
+        infoSpy = sinon.spy();
+        debugSpy = sinon.spy();
+
+        proxyLogger = proxyquire('../lib/index', {
+            'winston': {
+                transports:{
+                    File: "",
+                    Console: "",
+                    Loggly: ""
+                },
+                Logger: function(){
+                    return {
+                        level: "",
+                        add: addSpy,
+                        log: logSpy,
+                        error: errorSpy,
+                        warn: warnSpy,
+                        info: infoSpy,
+                        debug: debugSpy
+                    };
+
+                }
+            }
+        });
     });
 
-    it('should not print in case DEBUG is set but not match the namespace', function () {
+    describe('log', function(){
+        it('should not print anything when DEBUG is not set', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.log("info", "message");
+                    expect(logSpy).to.have.not.been.called; // jshint ignore:line
+                });
+        });
 
+        it('should not print in case DEBUG is set but not match the namespace', function () {
+            return Q()
+                .then(function () {
+                    process.env.DEBUG = "someothernamespace";
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.log("info", "message");
+                    expect(logSpy).to.have.not.been.called; // jshint ignore:line
+                });
+        });
+
+        it('should print in case DEBUG is set and matches the namespace', function () {
+            return Q()
+                .then(function () {
+                    process.env.DEBUG = "namespace";
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.log("info", "message");
+                    expect(logSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
     });
 
-    it('should print in case DEBUG is set and matches the namespace', function () {
+    describe('error', function(){
+        it('should not print anything when DEBUG is not set', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.error("error");
+                    expect(errorSpy).to.have.not.been.called; // jshint ignore:line
+                });
+        });
 
+        it('should not print in case DEBUG is set but not match the namespace', function () {
+            return Q()
+                .then(function () {
+                    process.env.DEBUG = "someothernamespace";
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.error("error");
+                    expect(errorSpy).to.have.not.been.called; // jshint ignore:line
+                });
+        });
+
+        it('should print in case DEBUG is set and matches the namespace', function () {
+            return Q()
+                .then(function () {
+                    process.env.DEBUG = "namespace";
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.error("error");
+                    expect(errorSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
+    });
+
+    describe('warn', function(){
+        it('should not print anything when DEBUG is not set', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.warn("warn");
+                    expect(warnSpy).to.have.not.been.called; // jshint ignore:line
+                });
+        });
+
+        it('should not print in case DEBUG is set but not match the namespace', function () {
+            return Q()
+                .then(function () {
+                    process.env.DEBUG = "someothernamespace";
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.warn("warn");
+                    expect(warnSpy).to.have.not.been.called; // jshint ignore:line
+                });
+        });
+
+        it('should print in case DEBUG is set and matches the namespace', function () {
+            return Q()
+                .then(function () {
+                    process.env.DEBUG = "namespace";
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.warn("warn");
+                    expect(warnSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
+    });
+
+    describe('info', function(){
+        it('should not print anything when DEBUG is not set', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.info("info");
+                    expect(infoSpy).to.have.not.been.called; // jshint ignore:line
+                });
+        });
+
+        it('should not print in case DEBUG is set but not match the namespace', function () {
+            return Q()
+                .then(function () {
+                    process.env.DEBUG = "someothernamespace";
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.info("info");
+                    expect(infoSpy).to.have.not.been.called; // jshint ignore:line
+                });
+        });
+
+        it('should print in case DEBUG is set and matches the namespace', function () {
+            return Q()
+                .then(function () {
+                    process.env.DEBUG = "namespace";
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.info("info");
+                    expect(infoSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
+    });
+
+    describe('debug', function(){
+        it('should not print anything when DEBUG is not set', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.debug("debug");
+                    expect(debugSpy).to.have.not.been.called; // jshint ignore:line
+                });
+        });
+
+        it('should not print in case DEBUG is set but not match the namespace', function () {
+            return Q()
+                .then(function () {
+                    process.env.DEBUG = "someothernamespace";
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.debug("debug");
+                    expect(debugSpy).to.have.not.been.called; // jshint ignore:line
+                });
+        });
+
+        it('should print in case DEBUG is set and matches the namespace', function () {
+            return Q()
+                .then(function () {
+                    process.env.DEBUG = "namespace";
+                    var logger = proxyLogger.Logger("namespace");
+                    logger.debug("debug");
+                    expect(debugSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
     });
 
 });
