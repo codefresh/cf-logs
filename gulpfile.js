@@ -44,9 +44,9 @@ gulp.task('unit_pre', function () {
         }))
         .pipe(gulp.dest('coverage'))
         .pipe(cover.enforce( {
-            statements: 82,
-            blocks: 70,
-            lines: 85,
+            statements: 80,
+            blocks: 65,
+            lines: 80,
             uncovered: undefined
         }))
         .once('error', function (err) {

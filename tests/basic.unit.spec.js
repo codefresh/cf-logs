@@ -203,6 +203,24 @@ describe('using DEBUG environment variable', function () {
                 });
         });
 
+        it('should print in case DEBUG env variable is not set and using namespace codefresh', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("codefresh");
+                    logger.log("info", "message");
+                    expect(logSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
+
+        it('should print in case DEBUG env variable is not set and using namespace codefresh:{something}', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("codefresh:namespace");
+                    logger.log("info", "message");
+                    expect(logSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
+
         it('should not print in case DEBUG is set but not match the namespace', function () {
             return Q()
                 .then(function () {
@@ -231,6 +249,24 @@ describe('using DEBUG environment variable', function () {
                     var logger = proxyLogger.Logger("namespace");
                     logger.error("error");
                     expect(errorSpy).to.have.not.been.called; // jshint ignore:line
+                });
+        });
+
+        it('should print in case DEBUG env variable is not set and using namespace codefresh', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("codefresh");
+                    logger.error("error");
+                    expect(errorSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
+
+        it('should print in case DEBUG env variable is not set and using namespace codefresh:{something}', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("codefresh:namespace");
+                    logger.error("error");
+                    expect(errorSpy).to.have.been.calledOnce; // jshint ignore:line
                 });
         });
 
@@ -265,6 +301,24 @@ describe('using DEBUG environment variable', function () {
                 });
         });
 
+        it('should print in case DEBUG env variable is not set and using namespace codefresh', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("codefresh");
+                    logger.warn("warn");
+                    expect(warnSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
+
+        it('should print in case DEBUG env variable is not set and using namespace codefresh:{something}', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("codefresh:namespace");
+                    logger.warn("warn");
+                    expect(warnSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
+
         it('should not print in case DEBUG is set but not match the namespace', function () {
             return Q()
                 .then(function () {
@@ -296,6 +350,24 @@ describe('using DEBUG environment variable', function () {
                 });
         });
 
+        it('should print in case DEBUG env variable is not set and using namespace codefresh', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("codefresh");
+                    logger.info("info");
+                    expect(infoSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
+
+        it('should print in case DEBUG env variable is not set and using namespace codefresh:{something}', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("codefresh:namespace");
+                    logger.info("info");
+                    expect(infoSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
+
         it('should not print in case DEBUG is set but not match the namespace', function () {
             return Q()
                 .then(function () {
@@ -324,6 +396,24 @@ describe('using DEBUG environment variable', function () {
                     var logger = proxyLogger.Logger("namespace");
                     logger.debug("debug");
                     expect(debugSpy).to.have.not.been.called; // jshint ignore:line
+                });
+        });
+
+        it('should print in case DEBUG env variable is not set and using namespace codefresh', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("codefresh");
+                    logger.debug("debug");
+                    expect(debugSpy).to.have.been.calledOnce; // jshint ignore:line
+                });
+        });
+
+        it('should print in case DEBUG env variable is not set and using namespace codefresh:{something}', function () {
+            return Q()
+                .then(function () {
+                    var logger = proxyLogger.Logger("codefresh:namespace");
+                    logger.debug("debug");
+                    expect(debugSpy).to.have.been.calledOnce; // jshint ignore:line
                 });
         });
 
