@@ -20,6 +20,7 @@ logger.info("info message");
 logger.debug("debug meesage"):
 ```
 This is very powerfull for development, because many times you want to see only logs from a specific part of the application so you can for example set the DEBUG environment variable to for example: "codefresh:builds". <br />
+The default is set so that all logs that begins with a namespace 'codefresh,codefresh:*' will be shown.
 ### Logging Errors
 ```javascript
 var logger = require('cf-logs').Logger("codefresh:example");
