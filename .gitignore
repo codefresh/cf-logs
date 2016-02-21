@@ -3,3 +3,4 @@ node_modules
 .coverdata
 coverage/*.html
 .debug
+coverage

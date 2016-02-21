@@ -60,11 +60,6 @@ gulp.task('unit_pre', function () {
         });
 });
 
-gulp.task('coveralls', function(){
-    gulp.src('coverage/coverage-unit.info')
-        .pipe(coveralls());
-});
-
 gulp.task('unit_pre_no_coverage', function () {
     return gulp.src(['**/*.unit.spec.js', '!**/node_modules/**/*.js'], {read: false})
         .pipe(cover.instrument({
@@ -95,6 +90,11 @@ gulp.task('unit_test_no_coverage', function (callback) {
     runSequence('set_unit_env_vars',
         'unit_pre_no_coverage',
         callback);
+});
+
+gulp.task('coveralls', function(){
+    gulp.src('coverage/coverage-unit.info')
+        .pipe(coveralls());
 });
 
 gulp.task('watch', function () {
