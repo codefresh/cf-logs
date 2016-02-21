@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/codefresh-io/cf-logs/badge.svg?branch=develop)](https://coveralls.io/github/codefresh-io/cf-logs?branch=develop)
+
 # Codefresh logging library
 This library is a wrapper of winston logging library that adds additional beheaviour dedicated for our use.
 
