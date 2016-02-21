@@ -6,6 +6,8 @@ var rimraf      = require('gulp-rimraf');
 var env         = require('gulp-env');
 var runSequence = require('run-sequence');
 var watch       = require('gulp-watch');
+var coveralls = require('gulp-coveralls');
+
 require('shelljs/global');
 
 
@@ -39,8 +41,8 @@ gulp.task('unit_pre', function () {
         .pipe(mocha({reporter: 'spec', timeout: '10000'}))
         .pipe(cover.gather())
         .pipe(cover.format( {
-            reporter: 'html',
-            outFile: 'coverage-unit.html'
+            reporter: 'lcov',
+            outFile: 'coverage-unit.info'
         }))
         .pipe(gulp.dest('coverage'))
         .pipe(cover.enforce( {
@@ -56,6 +58,11 @@ gulp.task('unit_pre', function () {
         .once('end', function () {
             process.exit();
         });
+});
+
+gulp.task('coveralls', function(){
+    gulp.src('coverage/coverage-unit.info')
+        .pipe(coveralls());
 });
 
 gulp.task('unit_pre_no_coverage', function () {
