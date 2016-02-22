@@ -75,6 +75,3 @@ The default is set to null which will not print anything
 ### Show request id 
 Set 'showRequestId' field to true or false to show the current request id if exists
 The default is set to false
-
-
-
