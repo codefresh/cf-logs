@@ -46,12 +46,6 @@ gulp.task('unit_pre', function () {
             outFile: 'coverage-unit.info'
         }))
         .pipe(gulp.dest('coverage'))
-        .pipe(cover.enforce( {
-            statements: 80,
-            blocks: 65,
-            lines: 80,
-            uncovered: undefined
-        }))
         .once('error', function (err) {
             console.error(err);
             process.exit(1);
