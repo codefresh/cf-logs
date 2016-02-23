@@ -41,10 +41,16 @@ gulp.task('unit_pre', function () {
         }))
         .pipe(mocha({reporter: 'spec', timeout: '10000'}))
         .pipe(cover.gather())
-        .pipe(cover.format( {
-            reporter: 'lcov',
-            outFile: 'coverage-unit.info'
-        }))
+        .pipe(cover.format([
+            {
+                reporter: 'lcov',
+                outFile: 'coverage-unit.info'
+            },
+            {
+                reporter: 'html',
+                outFile: 'coverage-unit.html'
+            }
+        ]))
         .pipe(gulp.dest('coverage'))
         .once('error', function (err) {
             console.error(err);
