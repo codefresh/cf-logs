@@ -45,7 +45,16 @@ var options = {
   showNamespace: Boolean,
   env_module: String,
   showRequestId: Boolean,
-  level: String(one of: "error/warn/info/debug")
+  level: String(one of: "error/warn/info/debug"),
+  consoleOptions: {
+      formatter: function(options) {
+          // Receives the consoleOptions object, merged with the meta objects
+          // Should return a formatted string for this log.
+          // This is an example:
+          return new Date().toISOString() +' '+ options.level.toUpperCase() +' >> '+ (undefined !== options.message ? options.message : '') +
+                                    (options.meta && Object.keys(options.meta).length ? ' << ' + JSON.stringify(options.meta) : '' );
+      }
+  }
 }
 
 var logger = require('cf-logs');

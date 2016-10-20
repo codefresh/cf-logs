@@ -5,3 +5,4 @@ coverage/*.html
 .debug
 coverage
 .coveralls.yml
+.idea
