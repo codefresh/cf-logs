@@ -54,7 +54,9 @@ var options = {
           return new Date().toISOString() +' '+ options.level.toUpperCase() +' >> '+ (undefined !== options.message ? options.message : '') +
                                     (options.meta && Object.keys(options.meta).length ? ' << ' + JSON.stringify(options.meta) : '' );
       }
-  }
+  },
+  basePath: String,
+  baseNamepsace: String
 }
 
 var logger = require('cf-logs');
@@ -84,3 +86,10 @@ The default is set to null which will not print anything
 ### Show request id 
 Set 'showRequestId' field to true or false to show the current request id if exists
 The default is set to false
+### Namespace based on file path
+Set the basePath to your project root (__dirname), then create loggers with __filename as the namespace.
+Also, set your base namespace. (e.g. lalala)
+Result:
+basePath: /home/user/workspace/projectDir
+namespace: projectName
+newLogger(//home/user/workspace/projectDir/internalDir/file.js) will get the namespace: projectName:internalDir:file
