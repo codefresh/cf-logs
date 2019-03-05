@@ -39,6 +39,7 @@ steps:
     title: Publishing To Npm
     image: codefresh/node-tester-image:10.13.0
     commands:
+      - yarn install
       - NPM_TOKEN=${{NPM_TOKEN}} npm run ci-publish
     when:
       branch:
