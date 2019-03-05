@@ -24,7 +24,6 @@ steps:
         gulp no.onlys
         gulp unit_test
         gulp clean
-        gulp coveralls
     on_success:
       metadata:
         set:
