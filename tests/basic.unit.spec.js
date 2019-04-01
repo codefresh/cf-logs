@@ -173,11 +173,16 @@ describe('using DEBUG environment variable', function () {
         proxyLogger = proxyquire('../lib/index', {
             'winston': {
                 transports:{
-                    File: "",
-                    Console: "",
-                    Loggly: ""
+                    File: sinon.spy(),
+                    Console: sinon.spy(),
+                    Loggly: sinon.spy()
                 },
-                Logger: function(){
+                format: {
+                    combine: sinon.spy(),
+                    timestamp: sinon.spy(),
+                    printf: sinon.spy()
+                },
+                createLogger: function(){
                     return {
                         level: "",
                         add: addSpy,
