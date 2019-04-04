@@ -23,13 +23,6 @@ describe('setGlobalOptions - sets the options object from which all future logge
                 });
         });
 
-        it('should succeed when providing loggly with subdomain and inputToken', function () {
-            return Q()
-                .then(function () {
-                    cflogs.setGlobalOptions({loggly: {subdomain: "sub", inputToken: "token"}});
-                });
-        });
-
         it('should succeed when providing allowed level', function () {
             return Q()
                 .then(function () {
@@ -61,42 +54,6 @@ describe('setGlobalOptions - sets the options object from which all future logge
     });
 
     describe('negative', function () {
-
-        it('should fail when providing loggly without any inner options', function () {
-            return Q()
-                .then(function () {
-                    cflogs.setGlobalOptions({loggly: {}});
-                })
-                .then(function () {
-                    throw new Error("should have failed");
-                }, function (err) {
-                    expect(err.toString()).to.contain("subdomain was not provided");
-                });
-        });
-
-        it('should fail when providing loggly without inputToken field', function () {
-            return Q()
-                .then(function () {
-                    cflogs.setGlobalOptions({loggly: {subdomain: "sub"}});
-                })
-                .then(function () {
-                    throw new Error("should have failed");
-                }, function (err) {
-                    expect(err.toString()).to.contain("inputToken was not provided");
-                });
-        });
-
-        it('should fail when providing loggly without subdomain field', function () {
-            return Q()
-                .then(function () {
-                    cflogs.setGlobalOptions({loggly: {inputToken: "token"}});
-                })
-                .then(function () {
-                    throw new Error("should have failed");
-                }, function (err) {
-                    expect(err.toString()).to.contain("subdomain was not provided");
-                });
-        });
 
         it('should fail when providing level which is not a string', function () {
             return Q()
@@ -175,7 +132,6 @@ describe('using DEBUG environment variable', function () {
                 transports:{
                     File: sinon.spy(),
                     Console: sinon.spy(),
-                    Loggly: sinon.spy()
                 },
                 format: {
                     combine: sinon.spy(),
