@@ -38,10 +38,6 @@ The options that can be passed are:
 var options = {
   filePath: String,
   console: Boolean,
-  loggly:{
-    subdomain: String,
-    inputToken: String
-  },
   showNamespace: Boolean,
   env_module: String,
   showRequestId: Boolean,
