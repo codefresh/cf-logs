@@ -6,3 +6,4 @@ coverage/*.html
 coverage
 .coveralls.yml
 .idea
+.vscode
