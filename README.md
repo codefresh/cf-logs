@@ -36,8 +36,6 @@ logger.error("stack: %s", error.stack);
 The options that can be passed are:
 ```javascript
 var options = {
-  filePath: String,
-  console: Boolean,
   showNamespace: Boolean,
   env_module: String,
   showRequestId: Boolean,
@@ -58,12 +56,6 @@ var options = {
 var logger = require('cf-logs');
 logger.setGlobalOptions(options);
 ```
-### Logging to file
-Set 'filePath' field to an absolute path to a file save the logs to a file.
-The default is set to null which means no logging to file will happen.
-### Logging to console
-Set 'console' filed to true or false to log to the console.
-The default is set to true
 ### Logging levels
 The logging level is an additional filter that can be set, mainly for production usage.
 we have 4 levels, from highest to lowest priority:<br />
