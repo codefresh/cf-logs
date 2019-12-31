@@ -1,6 +1,6 @@
 {
   "name": "cf-logs",
-  "version": "1.1.22",
+  "version": "1.1.23",
   "description": "codefresh logs",
   "main": "lib/index.js",
   "repository": {
@@ -16,7 +16,7 @@
     "ci-publish": "ci-publish"
   },
   "dependencies": {
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "winston": "3.2.1"
   },
   "devDependencies": {
