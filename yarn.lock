@@ -11,10 +11,9 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
-"@newrelic/winston-enricher@^4.0.1":
+"@newrelic/winston-enricher@git+https://github.com/codefresh-io/newrelic-node-log-extensions.git#d79e001bdafc59abd84f90223c82160307e1bc18":
   version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@newrelic/winston-enricher/-/winston-enricher-4.0.1.tgz#88452342b541007bea1bb1d4d573b42fa7d6b215"
-  integrity sha512-yNQbnyqeFtSeyH3hpPJLbqvIl29GKgqeOmJ7IvpjMTVHZCqUTqRBMIB+wtJuuRepMLRgBCUw5RCH+xWEiHACRQ==
+  resolved "git+https://github.com/codefresh-io/newrelic-node-log-extensions.git#d79e001bdafc59abd84f90223c82160307e1bc18"
 
 "@sinonjs/commons@^1", "@sinonjs/commons@^1.0.2", "@sinonjs/commons@^1.3.1":
   version "1.3.1"

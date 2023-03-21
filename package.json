@@ -15,7 +15,7 @@
     "test": "mocha './{,!(node_modules)/**/}*.spec.js'"
   },
   "dependencies": {
-    "@newrelic/winston-enricher": "^4.0.1",
+    "@newrelic/winston-enricher": "git+https://github.com/codefresh-io/newrelic-node-log-extensions.git#d79e001bdafc59abd84f90223c82160307e1bc18",
     "lodash": "^4.17.21",
     "winston": "3.3.3"
   },
