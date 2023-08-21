@@ -8,7 +8,7 @@ steps:
 
   RunningUnitTests:
     title: Running Unit Tests
-    image: node:11.10.0
+    image: node:12.0.0
     commands:
     - yarn install
     - yarn test
