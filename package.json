@@ -15,6 +15,15 @@
     "test": "mocha './{,!(node_modules)/**/}*.spec.js'"
   },
   "dependencies": {
+    "@opentelemetry/api": "1.8.0",
+    "@opentelemetry/auto-instrumentations-node": "0.46.0",
+    "@opentelemetry/exporter-logs-otlp-http": "0.51.1",
+    "@opentelemetry/exporter-metrics-otlp-http": "0.51.1",
+    "@opentelemetry/exporter-trace-otlp-http": "0.51.1",
+    "@opentelemetry/exporter-prometheus": "0.51.1",
+    "@opentelemetry/host-metrics": "0.35.1",
+    "@opentelemetry/metrics": "0.24.0",
+    "@opentelemetry/winston-transport": "0.3.0",
     "lodash": "^4.17.21",
     "winston": "3.10.0"
   },
